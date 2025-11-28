@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+:root{
+    --font-family:  "Orbitron", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; 
+    --page-background:#F0F8FF;
+    --image-background:#f3f3f3;
+    --clock-background:#fff;
+    --clock-shadow:0px 2px 2px 0px rgba(0, 0, 0, 0.3); 
+    --time-background:#F0F8FF; 
+    --h1-color:#0086E4;
+    --active-clock:#323840;
+    --active-color:#fff;
+    --active-time:#24292D;
+}
+
+body{
+     font-family: var(--font-family);
+     background: var(--page-background);
+     display: flex;
+     padding: 6rem;
+     align-items: center;
+     justify-content: center;
+     flex-direction: column;
+}   
+img{
+    width: 15px;
+    height: 15px;
+    background: var(--image-background);
+    padding: 6px;
+    margin-top: -35px;
+    margin-left: 20px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+.clock{
+    background: var(--clock-background);
+    width: 410px;
+    padding: 45px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    border-radius: 10px;
+    box-shadow: var(--clock-shadow);
+}
+.clock h2{
+    font-size: 45px;
+    margin-top: 10px;
+}
+.clock p{
+    margin-top: -38px;
+}
+.hr, .mm, .ss{
+    background: var(--time-background);
+    padding: 15px;
+    border-radius: 20px;
+}
+h1{
+    text-align: center;
+    color: var(--h1-color);
+}
+.clock:before{
+    content: ":";
+    font-size: 80px;
+    position: relative;
+    left: 30%;
+    animation-name: blink;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+}
+.clock:after{
+    content: ":";
+    font-size: 80px;
+    position: relative;
+    right: 64%;
+    animation-name: blink;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+}
+.clock.active{
+    background: var(--active-clock);
+    color: var(--active-color);
+}
+.hr.active, .mm.active, .ss.active{
+    background: var(--active-time);
+} 
+@keyframes blink{
+    0%{
+       content: ""; 
+    }
+    100%{
+        content: ":";
+    }
+}
+@media(max-width: 600px){
+    .clock{
+        display: flex;
+        flex-direction: column;
+        width: 200px;
+        align-items: center;
+        /* flex-wrap: wrap; */
+    }
+    .clock:after, .clock:before{
+        display: none;
+    }
+    img{
+        position: absolute;
+        top: 60%;
+        left: 65%;
+    }
+    h1{
+        font-size: 30px;
+    }
+}
